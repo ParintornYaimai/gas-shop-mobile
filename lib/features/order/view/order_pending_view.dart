@@ -3,6 +3,7 @@ import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:siamgasshop/core/constants/app_colors.dart';
 import 'package:siamgasshop/core/utils/size_extension.dart';
+import 'package:siamgasshop/features/order/widgets/order_card.dart';
 
 class OrderPendingView extends StatelessWidget {
   const OrderPendingView({super.key});
@@ -34,7 +35,7 @@ class OrderPendingView extends StatelessWidget {
                   left: context.wp(4),
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.pop(context); // กลับไปหน้าก่อนหน้า
+                      Navigator.pop(context);
                     },
                     child: Icon(
                       Ionicons.chevron_back,
@@ -48,7 +49,17 @@ class OrderPendingView extends StatelessWidget {
           ),
         ),
       ),
-      body: Center(child: Text('Order Pending Content')),
+      body: Container(
+        color: AppColors.gray,
+        child: ListView(
+          padding: const EdgeInsets.all(16),
+          children: const [
+            OrderCard(), // เรียกใช้เฉย ๆ
+            // OrderCard(),
+            // OrderCard(),
+          ],
+        ),
+      ),
     );
   }
 }
