@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:siamgasshop/core/constants/app_assets.dart';
 import 'package:siamgasshop/core/constants/app_colors.dart';
 import '../../../core/utils/size_extension.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
@@ -16,6 +17,10 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   //เพิ่ม State
   int _currentIndex = 0; // เพิ่มตัวแปรเก็บ index
+
+  final List<Map<String, String>> banners = [
+    {'image': AppAssets.banner},
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +75,9 @@ class _HomeViewState extends State<HomeView> {
 
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: context.wp(2)).copyWith(top: context.wp(2)),
+          padding: EdgeInsets.symmetric(
+            horizontal: context.wp(2),
+          ).copyWith(top: context.wp(2)),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -117,52 +124,25 @@ class _HomeViewState extends State<HomeView> {
                     });
                   },
                 ),
-                items:
-                    [
-                      {'color': Colors.red[300], 'text': 'โปรโมชั่น 1'},
-                      {'color': Colors.blue[300], 'text': 'โปรโมชั่น 2'},
-                      {'color': Colors.green[300], 'text': 'โปรโมชั่น 3'},
-                      {'color': Colors.orange[300], 'text': 'โปรโมชั่น 4'},
-                      {'color': Colors.purple[300], 'text': 'โปรโมชั่น 5'},
-                    ].map((item) {
-                      return Builder(
-                        builder: (BuildContext context) {
-                          return Container(
-                            width: MediaQuery.of(context).size.width,
-                            margin: EdgeInsets.symmetric(
-                              horizontal: context.wp(6),
-                            ),
-                            decoration: BoxDecoration(
-                              color: item['color'] as Color,
-                              borderRadius: BorderRadius.circular(16),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.1),
-                                  blurRadius: 8,
-                                  offset: Offset(0, 4),
-                                ),
-                              ],
-                            ),
-                            child: Center(
-                              child: Text(
-                                item['text'] as String,
-                                style: TextStyle(
-                                  fontSize: context.sp(5),
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          );
-                        },
+                items: banners.map((item) {
+                  return Builder(
+                    builder: (context) {
+                      return SizedBox(
+                        width: context.wp(83),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Image.asset(item['image']!, fit: BoxFit.cover),
+                        ),
                       );
-                    }).toList(),
+                    },
+                  );
+                }).toList(),
               ),
               // เพิ่มจุด indicator ตรงนี้
               SizedBox(height: context.hp(1)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(5, (index) {
+                children: List.generate(1, (index) {
                   return Container(
                     width: 9,
                     height: 9,
