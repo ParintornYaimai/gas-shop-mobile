@@ -42,18 +42,18 @@ class _HomeViewState extends State<HomeView> {
                       child: Row(
                         children: [
                           Container(
-                            width: context.wp(10),
+                            width: context.wp(10), // วงกลมใหญ่ (ขอบขาว)
                             height: context.wp(10),
+                            padding: EdgeInsets.all(
+                              context.wp(1),
+                            ), // ความหนาของขอบขาว
                             decoration: BoxDecoration(
                               color: Colors.white,
-                              borderRadius: BorderRadius.circular(100)
+                              shape: BoxShape.circle,
                             ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(100),
+                            child: ClipOval(
                               child: Image.asset(
                                 AppAssets.logo,
-                                width: context.wp(8),
-                                height: context.hp(8),
                                 fit: BoxFit.contain,
                               ),
                             ),
