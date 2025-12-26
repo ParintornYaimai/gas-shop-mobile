@@ -3,6 +3,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:siamgasshop/core/constants/app_assets.dart';
 import 'package:siamgasshop/core/constants/app_colors.dart';
+import 'package:siamgasshop/features/notification/view/notification_view.dart';
+import 'package:siamgasshop/features/setting/view/settings_view.dart';
 import '../../../core/utils/size_extension.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
@@ -75,16 +77,36 @@ class _HomeViewState extends State<HomeView> {
                   ),
                   Row(
                     children: [
-                      Icon(
-                        Ionicons.person_circle_outline,
-                        color: Colors.white,
-                        size: context.wp(8.7),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SettingsView(),
+                            ),
+                          );
+                        },
+                        child: Icon(
+                          Ionicons.person_circle_outline,
+                          color: Colors.white,
+                          size: context.wp(8.7),
+                        ),
                       ),
                       SizedBox(width: context.wp(2)),
-                      Icon(
-                        Icons.notifications,
-                        color: Colors.white,
-                        size: context.wp(8),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => NotificationView(),
+                            ),
+                          );
+                        },
+                        child: Icon(
+                          Icons.notifications,
+                          color: Colors.white,
+                          size: context.wp(8),
+                        ),
                       ),
                     ],
                   ),
