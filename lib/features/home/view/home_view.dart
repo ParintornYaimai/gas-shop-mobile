@@ -39,15 +39,37 @@ class _HomeViewState extends State<HomeView> {
                   Flexible(
                     child: Align(
                       alignment: Alignment.centerLeft,
-                      child: Text(
-                        "SIAMGAS Shop",
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.prompt(
-                          fontSize: context.sp(4.9),
-                          fontWeight: FontWeight.w700,
-                          color: Colors.white,
-                        ),
-                        overflow: TextOverflow.ellipsis,
+                      child: Row(
+                        children: [
+                          Container(
+                            width: context.wp(10),
+                            height: context.wp(10),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(100)
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(100),
+                              child: Image.asset(
+                                AppAssets.logo,
+                                width: context.wp(8),
+                                height: context.hp(8),
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: context.wp(5)),
+                          Text(
+                            "SIAMGAS Shop",
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.prompt(
+                              fontSize: context.sp(4.9),
+                              fontWeight: FontWeight.w700,
+                              color: Colors.white,
+                            ),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
                       ),
                     ),
                   ),
