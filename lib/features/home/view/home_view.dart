@@ -175,7 +175,12 @@ class _HomeViewState extends State<HomeView> {
                         width: context.wp(83),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(16),
-                          child: Image.asset(item['image']!, fit: BoxFit.cover),
+                          child: Image.asset(
+                            item['image']!, 
+                            fit: BoxFit.cover,
+                            cacheWidth: (context.wp(40) * MediaQuery.of(context).devicePixelRatio).toInt(),
+                            cacheHeight: (context.wp(25) * MediaQuery.of(context).devicePixelRatio).toInt(),
+                            ),
                         ),
                       );
                     },
